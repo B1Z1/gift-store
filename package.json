@@ -7,7 +7,8 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "start:db": "docker compose -f ./tools/docker/docker-compose-development.yml up -d"
   },
   "private": true,
   "dependencies": {
