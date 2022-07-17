@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@gift-store/core/gift/gift-api": [
+        "libs/core/gift/gift-api/src/index.ts"
+      ],
       "@gift-store/core/user/user-api": [
         "libs/core/user/user-api/src/index.ts"
       ],
