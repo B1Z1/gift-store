@@ -1,3 +1,6 @@
 export const environment = {
-  production: false,
+	production: false,
+	dbHost: 'localhost',
+	dbUsername: 'admin',
+	dbPassword: 'admin'
 };

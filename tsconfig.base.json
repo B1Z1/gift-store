@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@gift-store/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@gift-store/core/user/user-api": [
+        "libs/core/user/user-api/src/index.ts"
+      ],
+      "@gift-store/core/user/user-server": [
+        "libs/core/user/user-server/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

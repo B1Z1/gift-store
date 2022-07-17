@@ -3,7 +3,8 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "api-interfaces": "libs/api-interfaces",
+    "core-user-user-api": "libs/core/user/user-api",
+    "core-user-user-server": "libs/core/user/user-server",
     "gift-store": "apps/gift-store",
     "gift-store-e2e": "apps/gift-store-e2e"
   }

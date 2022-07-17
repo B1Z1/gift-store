@@ -1,11 +1,24 @@
+import { UserServerModule, UserServerUser } from '@gift-store/core/user/user-server';
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { environment } from '../environments/environment';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		TypeOrmModule.forRoot({
+			type: 'postgres',
+			host: environment.dbHost,
+			port: 5432,
+			username: environment.dbUsername,
+			password: environment.dbPassword,
+			database: 'gift-store',
+			entities: [UserServerUser],
+			synchronize: true
+		}),
+		UserServerModule
+	],
+	controllers: [],
+	providers: [],
 })
-export class AppModule {}
+export class AppModule {
+}
