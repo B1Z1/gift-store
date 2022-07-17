@@ -18,6 +18,9 @@
       "@gift-store/core/gift/gift-api": [
         "libs/core/gift/gift-api/src/index.ts"
       ],
+      "@gift-store/core/gift/gift-server": [
+        "libs/core/gift/gift-server/src/index.ts"
+      ],
       "@gift-store/core/user/user-api": [
         "libs/core/user/user-api/src/index.ts"
       ],

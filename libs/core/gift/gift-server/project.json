@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core/gift/gift-server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/core/gift/gift-server",
+        "tsConfig": "libs/core/gift/gift-server/tsconfig.lib.json",
+        "packageJson": "libs/core/gift/gift-server/package.json",
+        "main": "libs/core/gift/gift-server/src/index.ts",
+        "assets": [
+          "libs/core/gift/gift-server/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/gift/gift-server/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/core/gift/gift-server"
+      ],
+      "options": {
+        "jestConfig": "libs/core/gift/gift-server/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

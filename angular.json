@@ -4,6 +4,7 @@
   "projects": {
     "api": "apps/api",
     "core-gift-gift-api": "libs/core/gift/gift-api",
+    "core-gift-gift-server": "libs/core/gift/gift-server",
     "core-user-user-api": "libs/core/user/user-api",
     "core-user-user-server": "libs/core/user/user-server",
     "gift-store": "apps/gift-store",

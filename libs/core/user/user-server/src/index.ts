@@ -1,2 +1,2 @@
 export * from './lib/UserServerModule';
-export * from './lib/UserServerUser';
+export * from './lib/UserServerUserEntity';

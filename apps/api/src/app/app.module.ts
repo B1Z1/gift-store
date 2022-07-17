@@ -1,4 +1,5 @@
-import { UserServerModule, UserServerUser } from '@gift-store/core/user/user-server';
+import { GiftServerGiftEntity, GiftServerModule } from '@gift-store/core/gift/gift-server';
+import { UserServerModule, UserServerUserEntity } from '@gift-store/core/user/user-server';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { environment } from '../environments/environment';
@@ -12,10 +13,14 @@ import { environment } from '../environments/environment';
 			username: environment.dbUsername,
 			password: environment.dbPassword,
 			database: 'gift-store',
-			entities: [UserServerUser],
+			entities: [
+				UserServerUserEntity,
+				GiftServerGiftEntity
+			],
 			synchronize: true
 		}),
-		UserServerModule
+		UserServerModule.forRoot(),
+		GiftServerModule.forRoot()
 	],
 	controllers: [],
 	providers: [],
