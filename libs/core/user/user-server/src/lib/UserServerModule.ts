@@ -1,8 +1,8 @@
+import { UserServerUserEntity } from '@gift-store/core/shared/entities';
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserServerController } from './UserServerController';
 import { UserServerService } from './UserServerService';
-import { UserServerUserEntity } from './UserServerUserEntity';
 
 @Module({
 	imports: [TypeOrmModule.forFeature([UserServerUserEntity])]

@@ -1,9 +1,9 @@
 import { CreateGiftDTO, GiftDTO, UpdateGiftDTO } from '@gift-store/core/gift/gift-api';
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import { GiftServerGiftEntity } from '@gift-store/core/shared/entities';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
 import { catchError, map, Observable } from 'rxjs';
 import { GiftServerDTOConverter } from './converters/GiftServerDTOConverter';
 import { GiftServerEntityConverter } from './converters/GiftServerEntityConverter';
-import { GiftServerGiftEntity } from './GiftServerGiftEntity';
 import { GiftServerService } from './GiftServerService';
 
 @Controller('gift')
@@ -34,7 +34,15 @@ export class GiftServerController {
 			);
 	}
 
-	@Post('create')
+	@Get('user/:userId')
+	findByUserId(@Param() { userId }: { userId: number }): Observable<Array<GiftDTO>> {
+		return this.service.findByUserId$(userId)
+			.pipe(
+				map(entities => this.dtoConverter.fromEntities(entities))
+			);
+	}
+
+	@Post()
 	create(@Body() dto: CreateGiftDTO): Observable<GiftDTO> {
 		const requestEntity: GiftServerGiftEntity = this.entityConverter.fromCreateDTO(dto);
 
@@ -44,9 +52,12 @@ export class GiftServerController {
 			);
 	}
 
-	@Post('update')
-	update(@Body() dto: UpdateGiftDTO): Observable<GiftDTO> {
-		const requestEntity: GiftServerGiftEntity = this.entityConverter.fromUpdateDTO(dto);
+	@Post(':id')
+	update(
+		@Param() { id }: { id: number },
+		@Body() dto: UpdateGiftDTO
+	): Observable<GiftDTO> {
+		const requestEntity: GiftServerGiftEntity = this.entityConverter.fromUpdateDTO(id, dto);
 
 		return this.service.update$(requestEntity)
 			.pipe(
@@ -54,7 +65,7 @@ export class GiftServerController {
 			);
 	}
 
-	@Post('remove/:id')
+	@Delete(':id')
 	remove(@Param() { id }: { id: number }): Observable<void> {
 		return this.service.remove$(id);
 	}

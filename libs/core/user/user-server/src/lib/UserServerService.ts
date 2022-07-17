@@ -1,8 +1,8 @@
+import { UserServerUserEntity } from '@gift-store/core/shared/entities';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, iif, mapTo, Observable, of, switchMap, throwError } from 'rxjs';
 import { Repository } from 'typeorm';
-import { UserServerUserEntity } from './UserServerUserEntity';
 
 @Injectable()
 export class UserServerService {

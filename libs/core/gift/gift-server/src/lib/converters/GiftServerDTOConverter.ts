@@ -1,6 +1,6 @@
 import { GiftDTO } from '@gift-store/core/gift/gift-api';
+import { GiftServerGiftEntity } from '@gift-store/core/shared/entities';
 import { Injectable } from '@nestjs/common';
-import { GiftServerGiftEntity } from '../GiftServerGiftEntity';
 
 @Injectable()
 export class GiftServerDTOConverter {

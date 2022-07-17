@@ -1,8 +1,8 @@
+import { UserServerUserEntity } from '@gift-store/core/shared/entities';
 import { LoginUserDTO, RegisterUserDTO, UserDTO } from '@gift-store/core/user/user-api';
 import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { catchError, map, Observable } from 'rxjs';
 import { UserServerService } from './UserServerService';
-import { UserServerUserEntity } from './UserServerUserEntity';
 
 @Controller('user')
 export class UserServerController {

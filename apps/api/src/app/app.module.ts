@@ -1,5 +1,6 @@
-import { GiftServerGiftEntity, GiftServerModule } from '@gift-store/core/gift/gift-server';
-import { UserServerModule, UserServerUserEntity } from '@gift-store/core/user/user-server';
+import { GiftServerModule } from '@gift-store/core/gift/gift-server';
+import { GiftServerGiftEntity, UserServerUserEntity } from '@gift-store/core/shared/entities';
+import { UserServerModule } from '@gift-store/core/user/user-server';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { environment } from '../environments/environment';

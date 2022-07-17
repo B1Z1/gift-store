@@ -1,8 +1,8 @@
+import { GiftServerGiftEntity } from '@gift-store/core/shared/entities';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, iif, mapTo, Observable, of, switchMap, throwError } from 'rxjs';
 import { Repository } from 'typeorm';
-import { GiftServerGiftEntity } from './GiftServerGiftEntity';
 
 @Injectable()
 export class GiftServerService {
@@ -20,14 +20,20 @@ export class GiftServerService {
 			this.repository.findOneBy({ id: id })
 		)
 			.pipe(
-				switchMap((gift: GiftServerGiftEntity | null) => {
+				switchMap((entity: GiftServerGiftEntity | null) => {
 					return iif(
-						() => !gift,
+						() => !entity,
 						throwError(() => new Error(`Cannot find gift by id: ${id}`)),
-						of(gift)
+						of(entity)
 					);
 				})
 			);
+	}
+
+	findByUserId$(userId: number): Observable<Array<GiftServerGiftEntity>> {
+		return from(
+			this.repository.findBy({ user: { id: userId } })
+		);
 	}
 
 	add$(entity: GiftServerGiftEntity): Observable<GiftServerGiftEntity> {
@@ -44,10 +50,10 @@ export class GiftServerService {
 			);
 	}
 
-	update$(gift: GiftServerGiftEntity): Observable<GiftServerGiftEntity> {
-		return from(this.repository.update({ id: gift.id }, gift))
+	update$(entity: GiftServerGiftEntity): Observable<GiftServerGiftEntity> {
+		return from(this.repository.update({ id: entity.id }, entity))
 			.pipe(
-				mapTo(gift)
+				mapTo(entity)
 			);
 	}
 }
